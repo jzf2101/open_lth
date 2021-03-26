@@ -49,7 +49,6 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
 
         def correct(labels, outputs):
             if len(output.shape) == 1:
-                pdb.set_trace()
                 correct = torch.sum(torch.eq(labels, torch.round(output)))
             else:
                 correct = torch.sum(torch.eq(labels, output.argmax(dim=1)))
