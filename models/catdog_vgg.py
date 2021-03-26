@@ -59,7 +59,7 @@ class Model(base.Model):
     @staticmethod
     def is_valid_model_name(model_name):
         return (
-            model_name.startswith("cifar_vgg_")
+            model_name.startswith("catdog_vgg_")
             and len(model_name.split("_")) == 3
             and model_name.split("_")[2].isdigit()
             and int(model_name.split("_")[2]) in [11, 13, 16, 19]
