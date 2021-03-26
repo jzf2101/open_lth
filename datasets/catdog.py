@@ -74,7 +74,7 @@ class Dataset(base.ImageDataset):
         )
         train_idx = [
             i
-            for i, f in enumerate(train_set.targets)
+            for i, f in enumerate(train_set._labels)
             if f in [classes.index("cat"), classes.index("dog")]
         ]
 
@@ -103,7 +103,7 @@ class Dataset(base.ImageDataset):
         )
         test_idx = [
             i
-            for i, f in enumerate(test_set.targets)
+            for i, f in enumerate(test_set._labels)
             if f in [classes.index("cat"), classes.index("dog")]
         ]
 
