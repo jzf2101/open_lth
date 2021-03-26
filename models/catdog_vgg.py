@@ -41,7 +41,7 @@ class Model(base.Model):
 
         self.layers = nn.Sequential(*layers)
         self.fc = nn.Linear(512, outputs)
-        self.criterion = nn.BCELoss()
+        self.criterion = nn.BCEWithLogitsLoss()
 
         self.apply(initializer)
 
@@ -50,7 +50,6 @@ class Model(base.Model):
         x = nn.AvgPool2d(2)(x)
         x = x.view(x.size(0), -1)
         x = self.fc(x)
-        x = nn.Sigmoid()(x)
         return x
 
     @property

@@ -49,7 +49,9 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
 
         def correct(labels, outputs):
             if len(output.shape) == 1:
-                correct = torch.sum(torch.eq(labels, torch.round(output)))
+                correct = torch.sum(
+                    torch.eq(labels, torch.round(torch.nn.Sigmoid()(output)))
+                )
             else:
                 correct = torch.sum(torch.eq(labels, output.argmax(dim=1)))
             return correct
