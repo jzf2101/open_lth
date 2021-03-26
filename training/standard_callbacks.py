@@ -48,7 +48,12 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
         total_correct = torch.tensor(0.0).to(get_platform().torch_device)
 
         def correct(labels, outputs):
-            return torch.sum(torch.eq(labels, output.argmax(dim=1)))
+            if len(output.shape) == 1:
+                pdb.set_trace()
+                correct = torch.sum(torch.eq(labels, torch.round(output)))
+            else:
+                correct = torch.sum(torch.eq(labels, output.argmax(dim=1)))
+            return correct
 
         model.eval()
 
@@ -64,7 +69,6 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
                     len(labels), device=get_platform().torch_device
                 )
                 example_count += labels_size
-                pdb.set_trace()
                 total_loss += model.loss_criterion(output, labels) * labels_size
                 total_correct += correct(labels, output)
 
