@@ -110,7 +110,7 @@ class Dataset(base.ImageDataset):
             if f in [classes.index("cat"), classes.index("dog")]
         ]
         test_set._labels = [
-            1 if f == classes.index("dog") else 0 for f in test_set._labels
+            1.0 if f == classes.index("dog") else 0.0 for f in test_set._labels
         ]
 
         return Subset(test_set, test_idx)

@@ -132,7 +132,7 @@ class Model(base.Model):
     @staticmethod
     def default_hparams():
         model_hparams = hparams.ModelHparams(
-            model_name="catdog_vgg_16",
+            model_name="catdog_vgg_11",
             model_init="kaiming_normal",
             batchnorm_init="uniform",
         )
