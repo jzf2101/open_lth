@@ -68,6 +68,7 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
                     len(labels), device=get_platform().torch_device
                 )
                 example_count += labels_size
+                pdb.set_trace()
                 total_loss += model.loss_criterion(output, labels) * labels_size
                 total_correct += correct(labels, output)
 
