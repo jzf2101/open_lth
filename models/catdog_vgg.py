@@ -41,7 +41,7 @@ class Model(base.Model):
 
         self.layers = nn.Sequential(*layers)
         self.fc = nn.Linear(512, outputs)
-        self.criterion = nn.CrossEntropyLoss()
+        self.criterion = nn.BCEWithLogitsLoss()
 
         self.apply(initializer)
 
