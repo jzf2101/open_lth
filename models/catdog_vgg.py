@@ -50,7 +50,7 @@ class Model(base.Model):
         x = nn.AvgPool2d(2)(x)
         x = x.view(x.size(0), -1)
         x = self.fc(x)
-        x = nn.Sigmoid(x)
+        x = nn.Sigmoid()(x)
         return x
 
     @property
