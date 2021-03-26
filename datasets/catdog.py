@@ -78,7 +78,9 @@ class Dataset(base.ImageDataset):
             for i, f in enumerate(train_set._labels)
             if f in [classes.index("cat"), classes.index("dog")]
         ]
-
+        train_set._labels = [
+            1 if f == classes.index("dog") else 0 for f in train_set._labels
+        ]
         return Subset(train_set, train_idx)
 
     @staticmethod
@@ -106,6 +108,9 @@ class Dataset(base.ImageDataset):
             i
             for i, f in enumerate(test_set._labels)
             if f in [classes.index("cat"), classes.index("dog")]
+        ]
+        test_set._labels = [
+            1 if f == classes.index("dog") else 0 for f in test_set._labels
         ]
 
         return Subset(test_set, test_idx)
