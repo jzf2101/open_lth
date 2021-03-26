@@ -63,6 +63,7 @@ def create_eval_callback(eval_name: str, loader: DataLoader, verbose=False):
                 output = model(examples)
                 if output.shape[1] == 1:
                     output = output.squeeze()
+                    labels = labels.float()
 
                 labels_size = torch.tensor(
                     len(labels), device=get_platform().torch_device
